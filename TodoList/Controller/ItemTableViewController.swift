@@ -45,13 +45,15 @@ class ItemTableViewController: UITableViewController {
     // MARK: - Table View Delegate Methods
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) {
-            if cell.accessoryType == .checkmark {
-                cell.accessoryType = .none
+        if let item = todoItems?[indexPath.row] {
+            do {
+                try realm.write({
+                    item.done = !item.done
+                })
+            } catch {
+                print("Error while changing done state, \(error)")
             }
-            else{
-                cell.accessoryType = .checkmark
-            }
+            tableView.reloadData()
         }
     }
     
