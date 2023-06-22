@@ -10,27 +10,35 @@ import RealmSwift
 
 class ItemTableViewController: UITableViewController {
     
-    var itemArray : Results<Item>!
+    var todoItems : Results<Item>?
     let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadItems()
+        //loadItems()
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return itemArray.count
+        return todoItems?.count ?? 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         var cellConfiguration = UIListContentConfiguration.cell()
-        cellConfiguration.text = itemArray[indexPath.row].title
+        
+        if let item = todoItems?[indexPath.row] {
+            cellConfiguration.text = item.title
+            cell.accessoryType = item.done ? .checkmark : .none
+        } else {
+            cellConfiguration.text = "No Items added"
+            cell.isUserInteractionEnabled = false
+            
+        }
+        
         cell.contentConfiguration = cellConfiguration
-        cell.accessoryType = itemArray[indexPath.row].done ? .checkmark : .none
         return cell
     }
     
@@ -77,7 +85,7 @@ class ItemTableViewController: UITableViewController {
     
     func loadItems() {
         
-        itemArray = realm.objects(Item.self)
+        todoItems = realm.objects(Item.self)
         tableView.reloadData()
         
     }
