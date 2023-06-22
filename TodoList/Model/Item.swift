@@ -10,6 +10,6 @@ import RealmSwift
 
 class Item : Object {
     
-    @Persisted var title: String
-    @Persisted var done: Bool
+    @Persisted var title: String = ""
+    @Persisted var done: Bool = false
 }

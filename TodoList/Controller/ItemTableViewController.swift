@@ -15,16 +15,16 @@ class ItemTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //loadItems()
+        loadItems()
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return todoItems?.count ?? 1
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         var cellConfiguration = UIListContentConfiguration.cell()
@@ -59,16 +59,22 @@ class ItemTableViewController: UITableViewController {
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
         let alert =  UIAlertController(title: "Add New Todey Item", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Add New Item", style: .default){ action in
+        let action = UIAlertAction(title: "Add New Item", style: .default){ [self] action in
             
             if let newTextField = alert.textFields?.first, newTextField.text != "" {
-                let newItem = Item()
-                newItem.title = newTextField.text!
-                newItem.done = false
-                
-                self.saveItems(newItem)
+                do {
+                    try self.realm.write({
+                        let newItem = Item()
+                        newItem.title = newTextField.text!
+                        self.realm.add(newItem)
+                        tableView.reloadData()
+                    })
+                } catch {
+                    print("error while saving realm \(error)")
+                }
+                tableView.reloadData()
             }
-          
+            
         }
         
         alert.addTextField { alertTextField in
@@ -89,17 +95,5 @@ class ItemTableViewController: UITableViewController {
         tableView.reloadData()
         
     }
-    
-    func saveItems(_ newItem: Item) {
-        do {
-            try realm.write({
-                realm.add(newItem)
-                tableView.reloadData()
-            })
-        }catch {
-            print("error while saving realm \(error)")
-        }
-    }
-    
     
 }

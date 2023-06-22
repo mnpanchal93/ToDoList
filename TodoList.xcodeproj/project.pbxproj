@@ -64,10 +64,10 @@
 			children = (
 				A0EED9102A4370FE00614986 /* Model */,
 				A0EED90F2A43653600614986 /* View */,
+				A0EED90E2A43651C00614986 /* Controller */,
 				A0EED9012A435BBE00614986 /* Assets.xcassets */,
 				A0EED9032A435BBE00614986 /* LaunchScreen.storyboard */,
 				A0EED9062A435BBE00614986 /* Info.plist */,
-				A0EED90E2A43651C00614986 /* Controller */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
