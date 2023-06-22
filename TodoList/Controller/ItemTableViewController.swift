@@ -22,7 +22,7 @@ class ItemTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return todoItems?.count ?? 1
+        return todoItems?.count  ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,7 +48,10 @@ class ItemTableViewController: UITableViewController {
         if let item = todoItems?[indexPath.row] {
             do {
                 try realm.write({
-                    item.done = !item.done
+                    
+                    realm.delete(item)
+                    // commented code is to update the item
+                    //item.done = !item.done
                 })
             } catch {
                 print("Error while changing done state, \(error)")
