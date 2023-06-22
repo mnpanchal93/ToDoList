@@ -10,11 +10,12 @@ import RealmSwift
 
 class ItemTableViewController: UITableViewController {
     
-    var itemArray = [Item]()
+    var itemArray : Results<Item>!
     let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadItems()
     }
 
     // MARK: - Table view data source
@@ -57,7 +58,6 @@ class ItemTableViewController: UITableViewController {
                 newItem.title = newTextField.text!
                 newItem.done = false
                 
-                self.itemArray.append(newItem)
                 self.saveItems(newItem)
             }
           
@@ -76,6 +76,10 @@ class ItemTableViewController: UITableViewController {
     
     
     func loadItems() {
+        
+        itemArray = realm.objects(Item.self)
+        tableView.reloadData()
+        
     }
     
     func saveItems(_ newItem: Item) {
