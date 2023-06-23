@@ -13,9 +13,15 @@ class ItemTableViewController: UITableViewController {
     var todoItems : Results<Item>?
     let realm = try! Realm()
     
+    var selectedCategory : Category?{
+        didSet {
+            loadItems()
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadItems()
     }
     
     // MARK: - Table view data source
@@ -48,9 +54,7 @@ class ItemTableViewController: UITableViewController {
         if let item = todoItems?[indexPath.row] {
             do {
                 try realm.write({
-                    
                     realm.delete(item)
-                    // commented code is to update the item
                     //item.done = !item.done
                 })
             } catch {
@@ -71,8 +75,7 @@ class ItemTableViewController: UITableViewController {
                     try self.realm.write({
                         let newItem = Item()
                         newItem.title = newTextField.text!
-                        self.realm.add(newItem)
-                        tableView.reloadData()
+                        selectedCategory?.items.append(newItem)
                     })
                 } catch {
                     print("error while saving realm \(error)")
@@ -96,7 +99,7 @@ class ItemTableViewController: UITableViewController {
     
     func loadItems() {
         
-        todoItems = realm.objects(Item.self)
+        todoItems = selectedCategory?.items.sorted(byKeyPath: "title",ascending: true)
         tableView.reloadData()
         
     }

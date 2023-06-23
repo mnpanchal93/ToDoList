@@ -16,6 +16,8 @@
 		A0EED9132A43735E00614986 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = A0EED9122A43735E00614986 /* Realm */; };
 		A0EED9152A43735E00614986 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A0EED9142A43735E00614986 /* RealmSwift */; };
 		A0EED9172A43742600614986 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EED9162A43742600614986 /* Item.swift */; };
+		A0EED9192A44A1D600614986 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EED9182A44A1D500614986 /* CategoryTableViewController.swift */; };
+		A0EED91B2A44A20B00614986 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EED91A2A44A20B00614986 /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		A0EED9062A435BBE00614986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0EED90C2A4364FD00614986 /* ItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
 		A0EED9162A43742600614986 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		A0EED9182A44A1D500614986 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		A0EED91A2A44A20B00614986 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 				A0EED8F82A435BBE00614986 /* AppDelegate.swift */,
 				A0EED8FA2A435BBE00614986 /* SceneDelegate.swift */,
 				A0EED90C2A4364FD00614986 /* ItemTableViewController.swift */,
+				A0EED9182A44A1D500614986 /* CategoryTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -94,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				A0EED9162A43742600614986 /* Item.swift */,
+				A0EED91A2A44A20B00614986 /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,8 +184,10 @@
 			files = (
 				A0EED9172A43742600614986 /* Item.swift in Sources */,
 				A0EED8F92A435BBE00614986 /* AppDelegate.swift in Sources */,
+				A0EED9192A44A1D600614986 /* CategoryTableViewController.swift in Sources */,
 				A0EED90D2A4364FD00614986 /* ItemTableViewController.swift in Sources */,
 				A0EED8FB2A435BBE00614986 /* SceneDelegate.swift in Sources */,
+				A0EED91B2A44A20B00614986 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
