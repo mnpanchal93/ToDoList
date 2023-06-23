@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Todoey-->
+        <!--Todo-->
         <scene sceneID="wd3-cf-2AC">
             <objects>
                 <tableViewController id="0Nc-mO-zjy" customClass="ItemTableViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                             <outlet property="delegate" destination="0Nc-mO-zjy" id="ym4-xy-DsB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Todoey" id="haR-kg-Rua">
+                    <navigationItem key="navigationItem" title="Todo" id="haR-kg-Rua">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6FT-qs-qd4">
                             <connections>
                                 <action selector="addButtonPressed:" destination="0Nc-mO-zjy" id="PTd-ML-P5X"/>
@@ -66,7 +66,7 @@
             </objects>
             <point key="canvasLocation" x="-276" y="617"/>
         </scene>
-        <!--Category Table View Controller-->
+        <!--Todo-->
         <scene sceneID="edR-lm-LRu">
             <objects>
                 <tableViewController id="L3p-3H-2yP" customClass="CategoryTableViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
@@ -89,7 +89,7 @@
                             <outlet property="delegate" destination="L3p-3H-2yP" id="kbh-pP-apv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="hkl-x9-THr">
+                    <navigationItem key="navigationItem" title="Todo" id="hkl-x9-THr">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gxv-ub-1ox">
                             <connections>
                                 <action selector="addButtonPressed:" destination="L3p-3H-2yP" id="cNL-J7-OIl"/>
