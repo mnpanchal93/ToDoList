@@ -103,5 +103,29 @@ class ItemTableViewController: UITableViewController {
         tableView.reloadData()
         
     }
+}
+
+
+// MARK: - Searchbar delegate methods
+
+extension ItemTableViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        todoItems = todoItems?.filter("title CONTAINS %@", searchBar.text!).sorted(byKeyPath: "title",ascending: true)
+        tableView.reloadData()
+        
+        // remove keyboard and make tableview again first responder
+        DispatchQueue.main.async {
+            searchBar.resignFirstResponder()
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchBar.text?.count == 0){
+            loadItems()
+            
+        }
+    }
     
 }
