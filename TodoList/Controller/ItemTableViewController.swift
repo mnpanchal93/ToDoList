@@ -112,7 +112,7 @@ extension ItemTableViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        todoItems = todoItems?.filter("title CONTAINS %@", searchBar.text!).sorted(byKeyPath: "title",ascending: true)
+        todoItems = todoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreted",ascending: true)
         tableView.reloadData()
         
         // remove keyboard and make tableview again first responder
