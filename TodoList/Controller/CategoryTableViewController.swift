@@ -50,7 +50,7 @@ class CategoryTableViewController: UITableViewController {
         
     }
     
-    // MARK: - action methods
+    // MARK: - Add Category Method
 
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
