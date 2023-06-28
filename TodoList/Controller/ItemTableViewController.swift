@@ -75,6 +75,7 @@ class ItemTableViewController: UITableViewController {
                     try self.realm.write({
                         let newItem = Item()
                         newItem.title = newTextField.text!
+                        newItem.dateCreted = Date()
                         selectedCategory?.items.append(newItem)
                     })
                 } catch {
