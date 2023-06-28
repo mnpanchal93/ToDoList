@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         do {
            let realm = try Realm()
+            print(Realm.Configuration.defaultConfiguration.fileURL)
         }
         catch {
             print("Got error while creating new realm \(error)")
