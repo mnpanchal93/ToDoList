@@ -102,5 +102,20 @@ class CategoryTableViewController: SwipeTableViewController {
         tableView.reloadData()
         
     }
+    
+    // MARK: - Swipetable delegate
+    
+    override func updateModel(at indexPath: IndexPath) {
+        
+        if let categoryFordeletion =  categories?[indexPath.row]{
+            do {
+                try realm.write({
+                    realm.delete(categoryFordeletion)
+                })
+            } catch {
+                print("erro while deleting category \(error)")
+            }
+        }
+    }
 
 }

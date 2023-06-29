@@ -32,7 +32,7 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
         guard orientation == .right else { return nil }
 
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-                self.updateAction()
+            self.updateModel(at:indexPath )
         }
     
         // customize the action appearance
@@ -42,8 +42,8 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
     }
 
 
-    func updateAction() {
-        print("sucessfully get the items")
+    func updateModel(at indexpath: IndexPath) {
+        print("sucessfully updated model")
     }
  
 
