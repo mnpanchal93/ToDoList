@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A03B16FD2A4CD6220057D0FC /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03B16FC2A4CD6220057D0FC /* SwipeTableViewController.swift */; };
 		A0EED8F92A435BBE00614986 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EED8F82A435BBE00614986 /* AppDelegate.swift */; };
 		A0EED8FB2A435BBE00614986 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EED8FA2A435BBE00614986 /* SceneDelegate.swift */; };
 		A0EED9002A435BBE00614986 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0EED8FE2A435BBE00614986 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		89770B405F791CA4601B446F /* Pods-TodoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoList.release.xcconfig"; path = "Target Support Files/Pods-TodoList/Pods-TodoList.release.xcconfig"; sourceTree = "<group>"; };
+		A03B16FC2A4CD6220057D0FC /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		A0EED8F52A435BBE00614986 /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EED8F82A435BBE00614986 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0EED8FA2A435BBE00614986 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				A0EED8FA2A435BBE00614986 /* SceneDelegate.swift */,
 				A0EED90C2A4364FD00614986 /* ItemTableViewController.swift */,
 				A0EED9182A44A1D500614986 /* CategoryTableViewController.swift */,
+				A03B16FC2A4CD6220057D0FC /* SwipeTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -125,7 +128,6 @@
 				F5BDE6D8DCB50680EEA4FB94 /* Pods-TodoList.debug.xcconfig */,
 				89770B405F791CA4601B446F /* Pods-TodoList.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -180,7 +182,7 @@
 			);
 			mainGroup = A0EED8EC2A435BBE00614986;
 			packageReferences = (
-				A0EED9112A43735E00614986 /* XCRemoteSwiftPackageReference "realm-swift.git" */,
+				A0EED9112A43735E00614986 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = A0EED8F62A435BBE00614986 /* Products */;
 			projectDirPath = "";
@@ -254,6 +256,7 @@
 				A0EED9172A43742600614986 /* Item.swift in Sources */,
 				A0EED8F92A435BBE00614986 /* AppDelegate.swift in Sources */,
 				A0EED9192A44A1D600614986 /* CategoryTableViewController.swift in Sources */,
+				A03B16FD2A4CD6220057D0FC /* SwipeTableViewController.swift in Sources */,
 				A0EED90D2A4364FD00614986 /* ItemTableViewController.swift in Sources */,
 				A0EED8FB2A435BBE00614986 /* SceneDelegate.swift in Sources */,
 				A0EED91B2A44A20B00614986 /* Category.swift in Sources */,
@@ -478,7 +481,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A0EED9112A43735E00614986 /* XCRemoteSwiftPackageReference "realm-swift.git" */ = {
+		A0EED9112A43735E00614986 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
@@ -491,12 +494,12 @@
 /* Begin XCSwiftPackageProductDependency section */
 		A0EED9122A43735E00614986 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A0EED9112A43735E00614986 /* XCRemoteSwiftPackageReference "realm-swift.git" */;
+			package = A0EED9112A43735E00614986 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
 		A0EED9142A43735E00614986 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A0EED9112A43735E00614986 /* XCRemoteSwiftPackageReference "realm-swift.git" */;
+			package = A0EED9112A43735E00614986 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
