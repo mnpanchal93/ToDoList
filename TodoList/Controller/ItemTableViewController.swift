@@ -7,11 +7,14 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class ItemTableViewController: SwipeTableViewController {
     
     var todoItems : Results<Item>?
     let realm = try! Realm()
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var selectedCategory : Category?{
         didSet {
@@ -20,8 +23,28 @@ class ItemTableViewController: SwipeTableViewController {
         
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let navBar = navigationController?.navigationBar
+        else{
+            fatalError("Navigation bar not found")
+        }
+        
+        navigationItem.title = selectedCategory?.name
+        
+        if let navBarColor = UIColor(hexString: selectedCategory!.color){
+            navBar.scrollEdgeAppearance?.backgroundColor = navBarColor
+            navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
+            navBar.scrollEdgeAppearance?.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(navBarColor, returnFlat: true)]
+            
+            searchBar.barTintColor = navBarColor
+            searchBar.searchTextField.backgroundColor = .white
+        }
+
     }
     
     // MARK: - Table view data source
@@ -39,6 +62,10 @@ class ItemTableViewController: SwipeTableViewController {
         
         if let item = todoItems?[indexPath.row] {
             cellConfiguration.text = item.title
+            if let cellColor = UIColor(hexString: selectedCategory!.color)?.darken(byPercentage: (CGFloat(indexPath.row)/CGFloat(todoItems!.count))) {
+                cell.backgroundColor = cellColor
+                cellConfiguration.textProperties.color = UIColor(contrastingBlackOrWhiteColorOn: cellColor, isFlat: true)
+            }
             cell.accessoryType = item.done ? .checkmark : .none
         } else {
             cellConfiguration.text = "No Items added"

@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class CategoryTableViewController: SwipeTableViewController {
 
@@ -16,6 +17,17 @@ class CategoryTableViewController: SwipeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCategories()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let navBar = navigationController?.navigationBar
+        else{
+            fatalError("Navigation bar not found")
+        }
+        
+        navBar.scrollEdgeAppearance?.backgroundColor = UIColor(hexString: "1D98F6")
+        navBar.scrollEdgeAppearance?.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : FlatWhite()]
+        
     }
 
     // MARK: - Table view data source
@@ -28,11 +40,13 @@ class CategoryTableViewController: SwipeTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        
+                
         var cellConfiguration = UIListContentConfiguration.cell()
         
-        if let item = categories?[indexPath.row] {
-            cellConfiguration.text = item.name
+        if let category = categories?[indexPath.row] {
+            cellConfiguration.text = category.name
+            cell.backgroundColor = UIColor(hexString: category.color)
+            cellConfiguration.textProperties.color = ContrastColorOf(cell.backgroundColor!, returnFlat: true)
 
         } else {
             cellConfiguration.text = "No Categories Added"
@@ -64,6 +78,7 @@ class CategoryTableViewController: SwipeTableViewController {
                     try self.realm.write({
                         let newCategory = Category()
                         newCategory.name = newTextField.text!
+                        newCategory.color = UIColor.randomFlat().hexValue()
                         self.realm.add(newCategory)
                     })
                 } catch {
