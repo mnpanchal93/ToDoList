@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class ItemTableViewController: SwipeTableViewController {
     
@@ -39,6 +40,10 @@ class ItemTableViewController: SwipeTableViewController {
         
         if let item = todoItems?[indexPath.row] {
             cellConfiguration.text = item.title
+            if let cellColor = UIColor(hexString: selectedCategory!.color)?.darken(byPercentage: (CGFloat(indexPath.row)/CGFloat(todoItems!.count))) {
+                cell.backgroundColor = cellColor
+                cellConfiguration.textProperties.color = UIColor(contrastingBlackOrWhiteColorOn: cellColor, isFlat: true)
+            }
             cell.accessoryType = item.done ? .checkmark : .none
         } else {
             cellConfiguration.text = "No Items added"
