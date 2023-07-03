@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         do {
-           let realm = try Realm()
-            print(Realm.Configuration.defaultConfiguration.fileURL)
+            _ = try Realm()
+            //print(Realm.Configuration.defaultConfiguration.fileURL)
         }
         catch {
             print("Got error while creating new realm \(error)")
