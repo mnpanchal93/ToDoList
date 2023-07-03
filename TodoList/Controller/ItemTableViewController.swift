@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class ItemTableViewController: UITableViewController {
+class ItemTableViewController: SwipeTableViewController {
     
     var todoItems : Results<Item>?
     let realm = try! Realm()
@@ -32,7 +32,9 @@ class ItemTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+        
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        
         var cellConfiguration = UIListContentConfiguration.cell()
         
         if let item = todoItems?[indexPath.row] {
@@ -54,8 +56,7 @@ class ItemTableViewController: UITableViewController {
         if let item = todoItems?[indexPath.row] {
             do {
                 try realm.write({
-                    realm.delete(item)
-                    //item.done = !item.done
+                    item.done = !item.done
                 })
             } catch {
                 print("Error while changing done state, \(error)")
@@ -104,6 +105,20 @@ class ItemTableViewController: UITableViewController {
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title",ascending: true)
         tableView.reloadData()
         
+    }
+    
+    // MARK: - Swipecell methods
+    
+    override func updateModel(at indexpath: IndexPath) {
+        if let itemForDeletion = todoItems?[indexpath.row] {
+            do {
+                try realm.write({
+                    realm.delete(itemForDeletion)
+                })
+            } catch {
+                print("erro while deleting item \(error)")
+            }
+        }
     }
 }
 
