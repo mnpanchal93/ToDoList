@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class CategoryTableViewController: UITableViewController {
+class CategoryTableViewController: SwipeTableViewController {
 
     var categories : Results<Category>?
     let realm = try! Realm()
@@ -26,7 +26,9 @@ class CategoryTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
+        
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        
         var cellConfiguration = UIListContentConfiguration.cell()
         
         if let item = categories?[indexPath.row] {
@@ -98,6 +100,21 @@ class CategoryTableViewController: UITableViewController {
         categories = realm.objects(Category.self)
         tableView.reloadData()
         
+    }
+    
+    // MARK: - Swipetable delegate
+    
+    override func updateModel(at indexPath: IndexPath) {
+        
+        if let categoryFordeletion =  categories?[indexPath.row]{
+            do {
+                try realm.write({
+                    realm.delete(categoryFordeletion)
+                })
+            } catch {
+                print("erro while deleting category \(error)")
+            }
+        }
     }
 
 }
