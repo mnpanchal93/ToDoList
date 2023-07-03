@@ -45,6 +45,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="Gup-c9-lZt" id="Nd8-yh-dAY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ANj-Q0-l4e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,16 +60,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="iDo-VS-5D5">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.27652573419999998" green="0.91964364109999996" blue="0.82721103839999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="barTintColor" red="0.58039215690000001" green="0.87267810310000005" blue="0.87510926570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
                         <navigationBarAppearance key="scrollEdgeAppearance">
-                            <color key="backgroundColor" red="0.27652573420175114" green="0.91964364112025554" blue="0.8272110383607858" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <textAttributes key="titleTextAttributes">
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </textAttributes>
+                            <color key="backgroundColor" red="0.27652573419999998" green="0.91964364109999996" blue="0.82721103839999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </navigationBarAppearance>
                     </navigationBar>
                     <connections>
@@ -102,6 +99,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Todo" id="hkl-x9-THr">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gxv-ub-1ox">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="addButtonPressed:" destination="L3p-3H-2yP" id="cNL-J7-OIl"/>
                             </connections>

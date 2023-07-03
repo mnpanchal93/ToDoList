@@ -14,6 +14,8 @@ class ItemTableViewController: SwipeTableViewController {
     var todoItems : Results<Item>?
     let realm = try! Realm()
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var selectedCategory : Category?{
         didSet {
             loadItems()
@@ -21,8 +23,28 @@ class ItemTableViewController: SwipeTableViewController {
         
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let navBar = navigationController?.navigationBar
+        else{
+            fatalError("Navigation bar not found")
+        }
+        
+        navigationItem.title = selectedCategory?.name
+        
+        if let navBarColor = UIColor(hexString: selectedCategory!.color){
+            navBar.scrollEdgeAppearance?.backgroundColor = navBarColor
+            navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
+            navBar.scrollEdgeAppearance?.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(navBarColor, returnFlat: true)]
+            
+            searchBar.barTintColor = navBarColor
+            searchBar.searchTextField.backgroundColor = .white
+        }
+
     }
     
     // MARK: - Table view data source
