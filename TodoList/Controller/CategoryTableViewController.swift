@@ -18,6 +18,17 @@ class CategoryTableViewController: SwipeTableViewController {
         super.viewDidLoad()
         loadCategories()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let navBar = navigationController?.navigationBar
+        else{
+            fatalError("Navigation bar not found")
+        }
+        
+        navBar.scrollEdgeAppearance?.backgroundColor = UIColor(hexString: "1D98F6")
+        navBar.scrollEdgeAppearance?.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : FlatWhite()]
+        
+    }
 
     // MARK: - Table view data source
 
@@ -35,6 +46,7 @@ class CategoryTableViewController: SwipeTableViewController {
         if let category = categories?[indexPath.row] {
             cellConfiguration.text = category.name
             cell.backgroundColor = UIColor(hexString: category.color)
+            cellConfiguration.textProperties.color = ContrastColorOf(cell.backgroundColor!, returnFlat: true)
 
         } else {
             cellConfiguration.text = "No Categories Added"
