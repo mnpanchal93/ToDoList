@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Todo-->
+        <!--Item Table View Controller-->
         <scene sceneID="wd3-cf-2AC">
             <objects>
                 <tableViewController id="0Nc-mO-zjy" customClass="ItemTableViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
@@ -38,7 +38,7 @@
                             <outlet property="delegate" destination="0Nc-mO-zjy" id="ym4-xy-DsB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Todo" id="haR-kg-Rua">
+                    <navigationItem key="navigationItem" id="haR-kg-Rua">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6FT-qs-qd4">
                             <connections>
                                 <action selector="addButtonPressed:" destination="0Nc-mO-zjy" id="PTd-ML-P5X"/>
@@ -54,10 +54,13 @@
         <scene sceneID="8dd-80-b8x">
             <objects>
                 <navigationController id="0uf-0Z-eSr" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iDo-VS-5D5">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="iDo-VS-5D5">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.58039215690000001" green="0.87267810310000005" blue="0.87510926570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                         <navigationBarAppearance key="scrollEdgeAppearance">
                             <color key="backgroundColor" red="0.27652573420175114" green="0.91964364112025554" blue="0.8272110383607858" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <textAttributes key="titleTextAttributes">
